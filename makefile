@@ -1,4 +1,4 @@
-NOME = 3-maior_que
+NOME = 4-testa_biblioteca
 
 all: $(NOME).o
 	ld -s -o $(NOME) $(NOME).o

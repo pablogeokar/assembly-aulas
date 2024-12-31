@@ -50,8 +50,10 @@ final:
     int SYS_CALL
 
     mov eax, SYS_EXIT
-    mov ebx, RET_EXIT
+    mov ebx, ebx ; ou mov ebx, RET_EXIT    
     int SYS_CALL
     
-
-    
+; ENTENDENDO A RÉGUA BINÁRIA
+;   128 64  32  16  8   4   2   1
+; 7=  0  0   0   0  0   1   1   1
+; 5=  0  0   0   0  0   1   0   1
