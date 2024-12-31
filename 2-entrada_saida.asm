@@ -9,12 +9,14 @@ segment .data
     ; EBX
     SYS_EXIT    equ 0x1     ; syscall exit
     STD_IN      equ 0x0     ; saída padrão
-    STD_OUT     equ 0x1     ; stdout    
+    STD_OUT     equ 0x1     ; stdout
 
 
 section .data
     msg db 'Entre com o seu nome: ', LF, NULL
     tam equ $- msg
+    msgSaida db 'O nome digitado foi: ', NULL
+    tamSaida equ $- msgSaida
 
 section .bss
     nome resb 100  ; Aumenta o buffer para 100 bytes
@@ -36,6 +38,13 @@ _start:
     mov ebx, STD_IN
     mov ecx, nome
     mov edx, 100 ; lê até 100 bytes
+    int SYS_CALL
+
+    ; Escreve a mensagem de saída
+    mov eax, SYS_WRITE
+    mov ebx, STD_OUT
+    mov ecx, msgSaida
+    mov edx, tamSaida
     int SYS_CALL
 
     ; Escreve o nome lido
