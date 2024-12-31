@@ -1,4 +1,4 @@
-NOME = 4-testa_biblioteca
+NOME = 5-converte_string
 
 all: $(NOME).o
 	ld -s -o $(NOME) $(NOME).o

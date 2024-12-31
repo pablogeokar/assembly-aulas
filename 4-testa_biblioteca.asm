@@ -1,4 +1,4 @@
-%include "bibliotecaE.inc"
+%include "bibliotecaE.lib"
 
 section .text
 
