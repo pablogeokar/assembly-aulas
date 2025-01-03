@@ -1,4 +1,4 @@
-NOME = 5-converte_string
+NOME = 6-menu
 
 all: $(NOME).o
 	ld -s -o $(NOME) $(NOME).o

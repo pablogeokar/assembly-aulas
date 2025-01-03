@@ -25,3 +25,33 @@ segment .data
         mov edx, TAM_BUFFER
         int SYS_CALL
         ret
+    ;------------------------------------------------------------------
+    ; Saída do terminal da String
+    ;------------------------------------------------------------------
+    mst_saida:
+        call tamStr
+        mov eax, SYS_WRITE
+        mov ebx, STD_OUT
+        int SYS_CALL
+        ret
+    
+
+    ;------------------------------------------------------------------
+    ; Calcular o tamanho da String
+    ;------------------------------------------------------------------
+    ; Entrada: ECX = endereço da string
+    ; Saída: EDX = tamanho da string
+    ;------------------------------------------------------------------
+    tamStr:
+        mov edx, ecx            ; ECX = endereço da string
+    proxChar:
+        cmp byte [edx], NULL    ; Verifica se chegou ao final da string
+        jz terminei             ; Se sim, termina
+        inc edx                 ; Próximo caractere
+        jmp proxChar            ; Verifica o próximo caractere
+    terminei:
+        sub edx, ecx            ; subtração para obter o tamanho da string
+        ret
+        
+
+    
